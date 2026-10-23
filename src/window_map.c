@@ -159,6 +159,26 @@ static int absolute_origin(const xteds_window_map *m, const xteds_window *win,
     return 0;
 }
 
+int xteds_map_origin(const xteds_window_map *m, uint32_t xid, int32_t *x, int32_t *y) {
+    const xteds_window *win = NULL;
+    for (uint32_t i = 0; i < XTEDS_MAX_WINDOWS; i++) {
+        if (m->win[i].xid == xid) {
+            win = &m->win[i];
+            break;
+        }
+    }
+    if (win == NULL) {
+        return -1;
+    }
+    int64_t ox, oy;
+    if (!absolute_origin(m, win, &ox, &oy)) {
+        return -1;
+    }
+    *x = (int32_t)ox;
+    *y = (int32_t)oy;
+    return 0;
+}
+
 static int contains(const xteds_window_map *m, const xteds_window *win, int32_t px, int32_t py) {
     if (!win->mapped) {
         return 0;

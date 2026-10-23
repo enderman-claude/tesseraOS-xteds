@@ -9,5 +9,9 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: enderman-claude/tesseraOS-teds
+          path: tesseraOS-teds
       - name: build and test
-        run: make test all
+        run: make test TEDS_REPO=tesseraOS-teds

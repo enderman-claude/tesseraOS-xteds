@@ -27,9 +27,11 @@ uses client mode unless a window asks to be fullscreen and the manifest allows d
 2. Window table (`src/window_map.c`): tracks X window ids, their parent, geometry and
    whether they are mapped. Maps each top-level to a teds surface id. Implemented and
    host-tested.
-3. teds bridge: creates, commits and destroys surfaces through the teds client API. Stub
-   until the teds client library has sources (teds currently has protocol and API headers
-   only).
+3. teds bridge (`src/bridge.c`): each top-level window, including override-redirect windows,
+   owns one teds surface. It creates the surface when the window maps, copies pixels in and
+   commits, and destroys the surface when the window unmaps. Child windows draw into their
+   top-level's surface. A moved or resized window gets a new surface, because teds v1 has no
+   move operation. Implemented; tested against a real teds server over loopback.
 4. Input bridge: receives pointer and key events from teds, finds the focused X window,
    and sends the matching X event. Stub.
 
@@ -45,5 +47,5 @@ uses client mode unless a window asks to be fullscreen and the manifest allows d
 |---|---|
 | Window table | Implemented, host-tested |
 | X protocol front end | Stub |
-| teds bridge | Stub, depends on teds client sources |
+| teds bridge | Implemented; integration-tested against teds over loopback |
 | Input bridge | Stub |

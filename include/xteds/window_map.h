@@ -38,6 +38,9 @@ xteds_window *xteds_map_find(xteds_window_map *m, uint32_t xid);
 /* Top-level ancestor of xid (the window that owns a teds surface). Returns 0 if unknown. */
 uint32_t xteds_map_toplevel(const xteds_window_map *m, uint32_t xid);
 
+/* Absolute position of xid in root coordinates. Returns 0 on success, -1 if unknown. */
+int xteds_map_origin(const xteds_window_map *m, uint32_t xid, int32_t *x, int32_t *y);
+
 /* Hit test in root coordinates, topmost first. Returns the X window id, or 0 for none. */
 uint32_t xteds_map_hit_test(const xteds_window_map *m, int32_t x, int32_t y);
 

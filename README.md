@@ -7,8 +7,10 @@ same way XWayland runs as a client of a Wayland compositor. See
 
 ## Status
 
-The window table is implemented and tested (`make test`). The X protocol front end, the
-teds bridge and input are stubs. `build/xteds` runs the stub and exits with status 1.
+The window table and the teds bridge are implemented. `make test` runs the window table
+tests and an integration test that drives a real teds server over loopback (set `TEDS_REPO`
+to a teds checkout, default `../tesseraOS-teds`). The X protocol front end and input are
+stubs. `build/xteds` runs the stub and exits with status 1.
 
 ## Related repos
 
