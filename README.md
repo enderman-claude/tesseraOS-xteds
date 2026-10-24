@@ -17,3 +17,4 @@ stubs. `build/xteds` runs the stub and exits with status 1.
 - [tesseraOS-teds](https://github.com/enderman-claude/tesseraOS-teds): the display server xteds runs on as a client. Its window table and X windows map to teds surfaces.
 - [tesseraOS](https://github.com/enderman-claude/tesseraOS): the OS that both servers are part of.
 
+*Footnote: xteds speaks X fluently, so it never has to explain the conversation.*
